@@ -1,0 +1,12 @@
+{
+  "name": "bot-factory",
+  "version": "1.0.0",
+  "description": "Multi-tenant Telegram Shop Bot Factory with Mini Apps and Developer API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  }
+}

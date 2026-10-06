@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Factory API Documentation</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #18181b;
+      --border: #27272a;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #3b82f6;
+      --green: #10b981;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    p { color: var(--muted); font-size: 15px; }
+    .badge { display: inline-block; background: rgba(59, 130, 246, 0.15); color: var(--accent); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
+    .card h3 { font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .method { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .get { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+    .post { background: rgba(59, 130, 246, 0.15); color: var(--accent); }
+    .delete { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+    pre {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 13px;
+      color: #e4e4e7;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">FACTORY REST API v1</span>
+      <h1 style="margin-top: 10px;">API создания и запуска ботов</h1>
+      <p>Программное создание магазинов, автоматический запуск Telegram-ботов и управление через REST API.</p>
+    </header>
+
+    <div class="card">
+      <h3>🔑 Авторизация</h3>
+      <p>Передавайте ваш Developer API ключ в заголовке запросов:</p>
+      <pre>Authorization: Bearer sk_live_...
+или
+X-API-Key: sk_live_...</pre>
+    </div>
+
+    <div class="card">
+      <h3><span class="method post">POST</span> /api/v1/stores</h3>
+      <p>Создать и мгновенно запустить нового бота-магазина с Mini App:</p>
+      <pre>curl -X POST BASE_URL/api/v1/stores \
+  -H "Authorization: Bearer sk_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "botToken": "8879846994:AA...",
+    "adminId": 8282599467,
+    "storeName": "Мой Новый Магазин"
+  }'</pre>
+    </div>
+
+    <div class="card">
+      <h3><span class="method get">GET</span> /api/v1/stores</h3>
+      <p>Получить список всех ваших созданных ботов и ссылки на их Mini App:</p>
+      <pre>curl -H "Authorization: Bearer sk_live_..." BASE_URL/api/v1/stores</pre>
+    </div>
+
+    <div class="card">
+      <h3><span class="method delete">DELETE</span> /api/v1/stores/{storeId}</h3>
+      <p>Остановить и удалить бота-магазина:</p>
+      <pre>curl -X DELETE BASE_URL/api/v1/stores/shop_a1b2 \
+  -H "Authorization: Bearer sk_live_..."</pre>
+    </div>
+  </div>
+</body>
+</html>
+
