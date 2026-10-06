@@ -1,8 +1,7 @@
 node_modules/
-__pycache__/
-*.pyc
 *.log
-*.sqlite
-*.sqlite-wal
-*.sqlite-shm
+database.sqlite
 .env
+.DS_Store
+public/uploads/*
+!public/uploads/.gitkeep
